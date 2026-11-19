@@ -37,13 +37,13 @@ def init():
     if not c.execute("select 1 from users").fetchone():
         u = os.environ.get("ADMIN_USER", "admin")
         p = os.environ.get("ADMIN_PASS") or secrets.token_urlsafe(8)
-        r = os.environ.get("ADMIN_REF") or "Wroxbaba31"
+        r = os.environ.get("ADMIN_REF") or "Wroxtanrıgibi"
         s = secrets.token_hex(8)
         c.execute("insert into users values(null,?,?,?,?,?)", (u, hp(p, s), s, "admin", now()))
         c.execute("insert or replace into meta values('ref',?)", (r,))
         print(f"\n=== ILK KURULUM ===\nAdmin kullanıcı: {u}\nAdmin şifre    : {p}\nAdmin referans : {r}\n(Bunları kaydet, tekrar gösterilmez)\n")
     if not c.execute("select 1 from meta where k='ref2'").fetchone():  # eski veritabanında da referans = Wroxbaba31 olsun
-        c.execute("insert or replace into meta values('ref',?)", (os.environ.get("ADMIN_REF") or "Wroxbaba31",))
+        c.execute("insert or replace into meta values('ref',?)", (os.environ.get("ADMIN_REF") or "Wroxtanrıgibi",))
         c.execute("insert into meta values('ref2','1')")
     c.commit(); c.close()
 
